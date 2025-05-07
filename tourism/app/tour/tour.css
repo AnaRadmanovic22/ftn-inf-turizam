@@ -1,0 +1,45 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1,
+h2 {
+  color: #2c3e50;
+}
+
+#tours {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#tours th,
+#tours td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+#tour-details {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #ecf0f1;
+  border-radius: 8px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+input,
+textarea {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/*# sourceMappingURL=tour.css.map */
