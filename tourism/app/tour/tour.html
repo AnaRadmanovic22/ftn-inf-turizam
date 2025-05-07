@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregled Tura</title>
+    <link rel="stylesheet" href="tour.css">
+</head>
+
+<body>
+    <h1>Pregled Tura</h1>
+    <table id="tours">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Naziv</th>
+                <th>Dužina (km)</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <div id="tour-details"></div>
+
+    <h2>Dodaj novu turu</h2>
+    <form id="add-tour-form">
+        <label for="tour-name">Naziv:</label>
+        <input type="text" id="tour-name" required>
+        <label for="tour-length">Duzina (km)</label>
+        <input type="number" id="tour-length" required>
+        <label for="tour-description">Opis:</label>
+        <textarea id="tour-description" required></textarea>
+        <label for="tour-tags">Tagovi (razdvojeni zarezom)</label>
+        <input type="text" id="tour-tags" required>
+        <button type="submit">Dodaj turu</button>
+    </form>
+
+    <script src="tour.js"></script>
+</body>
+
+</html>
