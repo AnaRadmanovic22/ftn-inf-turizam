@@ -28,14 +28,23 @@
     <h2>Dodaj novu turu</h2>
     <form id="add-tour-form">
         <label for="tour-name">Naziv:</label>
-        <input type="text" id="tour-name" required>
-        <label for="tour-length">Duzina (km)</label>
-        <input type="number" id="tour-length" required>
+        <input type="text" name="tour-name" id="tour-name" required>
+
+        <label for="tour-length">Dužina (km):</label>
+        <input type="number" name="tour-length" id="tour-length" required>
+
         <label for="tour-description">Opis:</label>
-        <textarea id="tour-description" required></textarea>
-        <label for="tour-tags">Tagovi (razdvojeni zarezom)</label>
-        <input type="text" id="tour-tags" required>
-        <button type="submit">Dodaj turu</button>
+        <textarea name="tour-description" id="tour-description" required></textarea>
+
+        <div class="tag-container" id="tagContainer">
+            <div class="tag-input">
+                <input type="text" name="tags" placeholder="Unesite tag">
+                <!-- ova linija mi je bila problematicna i tu mi je treabala pomoc kao i kod same funckije addTagField() -->
+                <button type="button" onclick="addTagField()">+</button>
+            </div>
+        </div>
+
+        <button type="submit" id="submitBtn">Dodaj turu</button>
     </form>
 
     <script src="tour.js"></script>

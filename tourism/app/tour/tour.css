@@ -42,4 +42,37 @@ textarea {
   border: 1px solid #ccc;
 }
 
-/*# sourceMappingURL=tour.css.map */
+.tag-container {
+  margin-top: 10px;
+}
+
+.tag-input {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.tag-input input {
+  padding: 8px;
+  margin-right: 5px;
+}
+
+.tag-input button {
+  padding: 8px 12px;
+  background-color: #2fbaf1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.tag-input button:hover {
+  background-color: #1abc9c;
+}
+
+.tag-input .remove-tag {
+  margin-left: 5px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

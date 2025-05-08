@@ -7,11 +7,17 @@ function Tour(name, description, length, tags) {
 }
 
 
-const tours = [
-    new Tour("Gradska tura", "Tura kroz istorijske delove grada", 5, ["istorijska", "gradska"]),
-    new Tour("Planinska tura", "Tura po planinskim stazama", 15, ["priroda", "planinska"]),
-    new Tour("Rečna tura", "Tura brodom po rekama", 10, ["priroda", "voda"]),
-];
+function loadTours() {
+    const storedTours = localStorage.getItem("tours");
+    return storedTours ? JSON.parse(storedTours) : [];
+}
+
+function saveTours(tours) {
+    localStorage.setItem("tours", JSON.stringify(tours));
+}
+
+let tours = loadTours();
+
 
 function renderujTure() {
     const tableBody = document.querySelector("#tours tbody");
@@ -33,9 +39,10 @@ function renderujTure() {
         duzinaCelija.textContent = tour.length;
         row.appendChild(duzinaCelija);
 
-        row.addEventListener("click", function () {
+        row.addEventListener("click", () => {
             prikaziDetaljeTure(tour);
-        })
+        });
+
 
         tableBody.appendChild(row);
     }
@@ -53,5 +60,53 @@ function prikaziDetaljeTure(tour) {
 
     detaljiDiv.appendChild(paragraf);
 }
+
+function handleForSubmission(event) {
+    event.preventDefault();
+
+    const form = document.querySelector("#add-tour-form");
+    const formData = new FormData(form);
+
+    const name = formData.get("tour-name");
+    const length = formData.get("tour-length");
+    const description = formData.get("tour-description");
+    const tags = formData.getAll("tags");
+
+    const newTour = new Tour(name, description, length, tags);
+    tours.push(newTour);
+
+    saveTours(tours);
+
+    renderujTure();
+
+    form.reset();
+}
+
+
+function addTagField() {
+    const tagContainer = document.querySelector("#tagContainer");
+
+    const tagDiv = document.createElement("div");
+    tagDiv.classList.add("tag-input");
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.name = "tags";
+    input.placeholder = "Unesite tag";
+
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "-";
+    removeButton.classList.add("remove-tag");
+    removeButton.onclick = function () {
+        tagContainer.removeChild(tagDiv);
+    };
+
+    tagDiv.appendChild(input);
+    tagDiv.appendChild(removeButton);
+    tagContainer.appendChild(tagDiv);
+}
+
+
+document.querySelector("#add-tour-form").addEventListener("submit", handleForSubmission)
 
 renderujTure();
