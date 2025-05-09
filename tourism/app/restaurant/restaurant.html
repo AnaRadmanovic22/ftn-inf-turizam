@@ -6,7 +6,9 @@
         <title>Restorani</title>
     </head>
     <body>
+        <div class="container">
         <div id="left-container">
+
         <div id="restaurant-overview">
             <table>
                 <thead>
@@ -20,10 +22,32 @@
                 </tbody>
             </table>
         </div>
+
         <div id="restaurant-details">
                 
         </div>
     </div>
+
+    <div id="right-container">
+        <form id="newRestaurantForm">
+             <label for="name">Naziv restorana:</label>
+             <input type="text" id="name" name="name" required />
+
+             <label for="description">Opis restorana:</label>
+             <textarea name="description" id="description" required></textarea>
+
+             <div class="cuisine-container" id="cuisineContainer">
+                <label>Tip kuhinje:</label>
+                <div class="cuisine-input">
+                    <input type="text" name="cuisines" placeholder="Unesite tip kuhinje" required />
+                    <button  type="button" onclick="addCuisineField()">+</button>
+                </div>
+             </div>
+
+             <button type="submit" id="submitBtn">Dodaj restoran</button>
+        </form>
+    </div>
+</div>
     <script src="restaurant.js"></script>
     </body>
 </html>

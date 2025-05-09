@@ -48,6 +48,54 @@ function displayRestaurantDetails(restaurant){
 
 }
 
+function formSubmission(){
+    
+    let submitBtn = document.querySelector('#submitBtn');
+    submitBtn.addEventListener('click', function(){
+
+        const form = document.querySelector('#newRestaurantForm');
+        const formData = new FormData(form);
+
+        const name = formData.get('name');
+        const description = formData.get('description');
+        const cuisines = formData.getAll('cuisines')
+
+        const newRestaurant = new Restaurant(name, description, cuisines)
+
+        restaurants.push(newRestaurant);
+        localStorage.setItem("restaurants", JSON.stringify(restaurants))
+        createRestaurantRows();
+        form.reset();
+    })
+}
+
+function addCuisineField(){
+
+    const container = document.querySelector("#cuisineContainer");
+
+    const newFieldDiv = document.createElement('div')
+    newFieldDiv.className = "cuisine-input"
+
+    const input = document.createElement('input')
+    input.type = "text"
+    input.name = "cuisines"
+    input.placeholder = "Unesite tip kuhinje"
+    input.required = true
+
+    const removeBtn = document.createElement('button')
+    removeBtn.type = "button"
+    removeBtn.textContent = '-'
+
+    removeBtn.addEventListener('click', function(){
+       container.removeChild(newFieldDiv)
+    })
+
+   newFieldDiv.appendChild(input)
+   newFieldDiv.appendChild(removeBtn)
+
+   container.appendChild(newFieldDiv)
+}
+
 function initializeRestaurants(){
     const savedRestaurants = localStorage.getItem("restaurants");
 
@@ -61,5 +109,6 @@ function initializeRestaurants(){
     }
 
     createRestaurantRows();
+    formSubmission();
 }
 document.addEventListener('DOMContentLoaded', initializeRestaurants)
